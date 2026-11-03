@@ -4,6 +4,9 @@
 
 Nothing much to say. The exercise explicitly says no DOM manipulation, so here we are.
 
+> [!NOTE]
+> Open index.html to play or follow this link [Rock Paper Scissors Game](https://rizh-am.github.io/rockPaperScissors_Odin/)
+
 ## Features
 
 - Asks users for their choice
@@ -11,5 +14,7 @@ Nothing much to say. The exercise explicitly says no DOM manipulation, so here w
 - User inputs are validated, can be case insensitive, and spaces are ignored around the answer.
 - Displays the scoreboard after each round
 - Draws are counted as rounds
+
+---
 
 > Any improvements are highly appreciated
