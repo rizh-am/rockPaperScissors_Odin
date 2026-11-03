@@ -1,10 +1,9 @@
+"use strict";
 alert(
   "This is a rock, paper, scissors console game. Please follow the prompts to play.",
 );
 
 // Saving game-state data:
-let computerChoice = "";
-let userChoice = "";
 let roundCounter = 0;
 let playerWins = 0;
 let computerWins = 0;
@@ -22,15 +21,14 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-  userChoice = prompt("Enter your choice: rock / paper / scissors");
+  let userChoice = prompt("Enter your choice: rock / paper / scissors");
   if (userChoice !== null) {
-    userChoice = userChoice.toLowerCase();
+    userChoice = userChoice.toLowerCase().trim();
   }
   return userChoice;
 }
 
-function evaluateGame() {
-  computerChoice = getComputerChoice();
+function playRound(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     alert("DRAW!");
   } else if (
@@ -38,18 +36,18 @@ function evaluateGame() {
     (userChoice === "paper" && computerChoice === "scissors") ||
     (userChoice === "scissors" && computerChoice === "rock")
   ) {
-    alert("Computer won this round!");
+    alert(`Computer won this round! ${computerChoice} beats ${userChoice}`);
     computerWins++;
   } else {
-    alert("You won this round!");
+    alert(`You won this round! ${userChoice} beats ${computerChoice}`);
     playerWins++;
   }
   roundCounter++;
 }
 
 function displayStats() {
-  alert(`This is round ${roundCounter}\n
-          You won ${playerWins} times\n
+  alert(`This is round ${roundCounter}
+          You won ${playerWins} times
           Computer won ${computerWins} times     
     `);
   if (roundCounter === 5) {
@@ -69,7 +67,7 @@ function endProgram() {
 
 function startProgram() {
   while (roundCounter < 5) {
-    getUserChoice();
+    const userChoice = getUserChoice();
     if (userChoice === null) {
       if (confirm("Do you want to cancel?")) break;
       continue;
@@ -82,8 +80,8 @@ function startProgram() {
       alert("Invalid input. Please type either rock, paper or scissors");
       continue;
     }
-
-    evaluateGame();
+    const computerChoice = getComputerChoice();
+    playRound(userChoice, computerChoice);
     displayStats();
   }
   endProgram();
