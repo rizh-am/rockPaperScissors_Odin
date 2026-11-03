@@ -23,6 +23,7 @@ function getComputerChoice() {
 function getUserChoice() {
   let userChoice = prompt("Enter your choice: rock / paper / scissors");
   if (userChoice !== null) {
+    // null.toLowerCase() would crash
     userChoice = userChoice.toLowerCase().trim();
   }
   return userChoice;
@@ -69,8 +70,8 @@ function startProgram() {
   while (roundCounter < 5) {
     const userChoice = getUserChoice();
     if (userChoice === null) {
-      if (confirm("Do you want to cancel?")) break;
-      continue;
+      if (confirm("Do you want to cancel?")) break; // true: loop ends
+      continue; // false: loop restarts
     }
     if (
       userChoice !== "rock" &&
